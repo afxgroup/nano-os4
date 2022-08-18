@@ -32,6 +32,7 @@
  * we fall back on the home directory of the effective user ID. */
 void get_homedir(void)
 {
+#ifndef __amigaos4__	
 	if (homedir == NULL) {
 		const char *homenv = getenv("HOME");
 
@@ -51,6 +52,9 @@ void get_homedir(void)
 		if (homenv != NULL && *homenv != '\0')
 			homedir = copy_of(homenv);
 	}
+#else
+	homedir = copy_of("/progdir");
+#endif	
 }
 
 /* Return the filename part of the given path. */

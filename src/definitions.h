@@ -60,6 +60,10 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
+#ifdef __amigaos4__
+#define HAVE_NCURSESW_NCURSES_H
+#endif
+
 /* Prefer wide ncurses over normal ncurses over curses. */
 #if defined(HAVE_NCURSESW_NCURSES_H)
 #include <ncursesw/ncurses.h>

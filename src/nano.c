@@ -42,6 +42,12 @@
 #include <sys/vt.h>
 #endif
 
+#ifdef __amigaos4__
+// increase the stack just to be safe
+static const char __attribute__((used)) min_stack[] = "$STACK:1024000";
+static const char __attribute__((used)) nano_version[] = "\0$VER: nano 1.0 (17.08.2022)";
+#endif
+
 #ifdef ENABLE_MULTIBUFFER
 #define read_them_all  TRUE
 #else
@@ -1669,6 +1675,9 @@ void process_a_keystroke(void)
 
 int main(int argc, char **argv)
 {
+#ifdef __amigaos4__
+	enableUnixPaths();
+#endif		
 	int stdin_flags, optchr;
 #ifdef ENABLE_NANORC
 	bool ignore_rcfiles = FALSE;

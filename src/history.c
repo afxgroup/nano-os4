@@ -214,16 +214,22 @@ bool have_statedir(void)
 	}
 
 	free(statedir);
+#ifndef __amigaos4__
 	xdgdatadir = getenv("XDG_DATA_HOME");
-
+#else
+	xdgdatadir = getenv("/progdir");
+#endif	
 	if (homedir == NULL && xdgdatadir == NULL)
 		return FALSE;
 
 	if (xdgdatadir != NULL)
 		statedir = concatenate(xdgdatadir, "/nano/");
 	else
+#ifndef __amigaos4__
 		statedir = concatenate(homedir, "/.local/share/nano/");
-
+#else
+		statedir = concatenate(homedir, "/env/nano/");
+#endif
 	if (stat(statedir, &dirinfo) == -1) {
 		if (xdgdatadir == NULL) {
 			char *statepath = concatenate(homedir, "/.local");

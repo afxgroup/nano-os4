@@ -25,6 +25,11 @@
 
 #ifdef ENABLE_NANORC
 
+#ifdef __amigaos4__
+#undef SYSCONFDIR
+#define SYSCONFDIR "/progdir"
+#endif
+
 #include <ctype.h>
 #include <errno.h>
 #include <glob.h>
