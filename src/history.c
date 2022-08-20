@@ -217,7 +217,7 @@ bool have_statedir(void)
 #ifndef __amigaos4__
 	xdgdatadir = getenv("XDG_DATA_HOME");
 #else
-	xdgdatadir = getenv("/progdir");
+	xdgdatadir = "/nano";
 #endif	
 	if (homedir == NULL && xdgdatadir == NULL)
 		return FALSE;

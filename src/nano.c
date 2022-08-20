@@ -670,6 +670,7 @@ void usage(void)
  * information, and the configuration options this nano was compiled with. */
 void version(void)
 {
+	
 #ifdef REVISION
 	printf(" GNU nano from git, %s\n", REVISION);
 #else

@@ -27,7 +27,7 @@
 
 #ifdef __amigaos4__
 #undef SYSCONFDIR
-#define SYSCONFDIR "/progdir"
+#define SYSCONFDIR "/nano"
 #endif
 
 #include <ctype.h>

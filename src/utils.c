@@ -53,7 +53,8 @@ void get_homedir(void)
 			homedir = copy_of(homenv);
 	}
 #else
-	homedir = copy_of("/progdir");
+	
+	homedir = copy_of("/nano");
 #endif	
 }
 
